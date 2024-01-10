@@ -6,7 +6,7 @@ import htmlPurge from 'vite-plugin-purgecss';
 
 export default defineConfig({
     root: './',
-    base: 'hiberus-test/',
+    base: '/hiberus-test/',
     plugins: [
         handlebars({
             partialDirectory: resolve(__dirname, 'src', 'partials'),
