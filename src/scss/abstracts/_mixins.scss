@@ -1,0 +1,94 @@
+@use "sass:meta";
+@use "sass:math";
+@use "sass:map";
+@use "./breakpoints" as *;
+
+@mixin mq($breakpoint) {
+    @if map.has-key($breakpoints, $breakpoint) {
+        $breakpoint: map-get($breakpoints, $breakpoint);
+
+        @media screen and (min-width: $breakpoint) {
+            @content;
+        }
+    }
+
+    @else if meta.type-of($breakpoint)=="number" {
+        @if math.is-unitless($breakpoint) {
+            @error 'Para un numero, se le debe agregar un  unidad (px, em, etc)';
+        }
+
+        @else {
+            @media screen and (min-width: $breakpoint) {
+                @content;
+            }
+        }
+    }
+
+    @else {
+        @error 'La keyword #{$breakpoint} no esta en el mapa de $breakpoints';
+    }
+}
+
+@mixin heading($fs, $color: $heading-color-default) {
+    font-size: $fs;
+    color: $color;
+
+    font-family: $heading-font-family;
+    text-transform: $heading-text-transform;
+    letter-spacing: $heading-letter-spacing;
+    font-weight: $heading-font-weight;
+    line-height: $heading-line-height;
+}
+
+@mixin keyframes($name) {
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+@mixin animation ($delay, $duration, $animation, $direction: normal, $fillmode: fowards, $timing: ease) {
+    animation-delay: $delay;
+    animation-duration: $duration;
+    animation-name: $animation;
+    animation-fill-mode: $fillmode;
+    animation-direction: $direction;
+    animation-timing-function: $timing;
+}
+
+@mixin position ($position: static, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin flex ($direction: row, $justify-content: null, $align-items: null, $wrap: null) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-wrap: $wrap;
+}
+
+@mixin list-reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@mixin glass-dark {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+@mixin glass-light {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+@mixin border($color: $foreground, $side: 1px, $style: solid) {
+    border: $side $style $color;
+}

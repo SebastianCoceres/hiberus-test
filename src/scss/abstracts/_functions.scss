@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "./colors" as *;
+@use "./breakpoints" as *;
+
+@function getcolor($color, $tone, $map: $colors) {
+    @if map.has-key($map, $key: $color) {
+        @return map.get(map.get($colors, $color), $tone);
+    }
+
+    @else {
+        @error "color #{$color} not found";
+    }
+}
+
+@function getBrekpoints($key) {
+    @return map.get($breakpoints, $key);
+}

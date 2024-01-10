@@ -1,0 +1,10 @@
+@use "../abstracts/" as *;
+
+.splide__slide img {
+    width: 100%;
+    aspect-ratio: 4/3;
+
+    @include mq(md) {
+        aspect-ratio: 3/1;
+    }
+}

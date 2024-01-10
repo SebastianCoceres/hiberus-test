@@ -1,0 +1,76 @@
+@use "sass:color";
+@use "./typography" as *;
+@use "./functions" as *;
+
+/*
+    Tokens de configuración.
+*/
+
+$color-token: "blue"; // ./abstracts/_colors.scss
+
+$primary-color: getcolor($color-token, "950");
+$secondary-color: getcolor($color-token, "300");
+$foreground: getcolor("neutral", "100");
+$background: getcolor("neutral", "800");
+
+$darken-foreground: darken($foreground, 10%);
+$lighten-background: lighten($background, 10%);
+$traslucent-background: rgba($background, .5);
+$traslucent-foreground: rgba($foreground, .2);
+
+$link-color: $primary-color;
+$link-color-hover: $secondary-color;
+
+$headings-font-family: $font-family-Monserrat;
+$headings-font-size: $xl-font-size;
+$headings-line-height: $line-height;
+$headings-font-weight : $font-weight-bold;
+$headings-color-default: $background;
+
+// Esquemas
+$body-font-family: $font-family-Poppins;
+$body-font-size: $md-font-size;
+$body-line-height: $line-height;
+$body-font-weight : $font-weight-normal;
+$body-background-color: $lighten-background;
+$body-color-default: $darken-foreground;
+
+$header-font-family: $body-font-family;
+$header-font-size: $md-font-size;
+$header-line-height: $line-height;
+$header-font-weight : $font-weight-light;
+$header-background-color: $primary-color;
+$header-color-default: $foreground;
+$header-border-color: $lighten-background;
+$header-link-color: $foreground;
+$header-link-color-hover: $secondary-color;
+
+$main-font-family: $body-font-family;
+$main-font-size: $md-font-size;
+$main-line-height: $line-height;
+$main-font-weight : $font-weight-light;
+$main-background-color: $background;
+$main-color-default: $foreground;
+$main-border-color: $lighten-background;
+$main-card-background-color: $traslucent-background;
+$main-card-color-default: $foreground;
+$main-card-border-color: $lighten-background;
+
+$aside-font-family: $body-font-family;
+$aside-font-size: $md-font-size;
+$aside-line-height: $line-height;
+$aside-font-weight : $font-weight-light;
+$aside-background-color: $traslucent-background;
+$aside-color-default: $foreground;
+$aside-border-color: $lighten-background;
+$aside-item-background-color: $traslucent-foreground;
+$aside-item-color-default: $foreground;
+$aside-item-border-color: $lighten-background;
+
+$footer-font-family: $body-font-family;
+$footer-font-size: $md-font-size;
+$footer-line-height: $line-height;
+$footer-font-weight : $font-weight-light;
+$footer-background-color: $background;
+$footer-color-default: $foreground;
+$footer-border-color: $lighten-background;

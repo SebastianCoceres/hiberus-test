@@ -1,0 +1,39 @@
+@use "../abstracts/" as *;
+
+.grid__wrapper {
+    display: grid;
+    width: 100%;
+    min-height: 100vh;
+    grid-template-areas:
+        "head"
+        "main"
+        "aside"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+    gap: 1em;
+
+    @include mq(lg) {
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "head head head head"
+            "aside main main main"
+            "footer footer footer footer";
+    }
+}
+
+.grid__wrapper>header {
+    grid-area: head;
+}
+
+.grid__wrapper>main {
+    grid-area: main;
+}
+
+.grid__wrapper>aside {
+    grid-area: aside;
+}
+
+.grid__wrapper>footer {
+    grid-area: footer;
+}

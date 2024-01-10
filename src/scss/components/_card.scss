@@ -1,0 +1,65 @@
+@use "../abstracts/" as *;
+
+@mixin card ($bg: $background, $color: $foreground, $border-color: $background) {
+    @include border($border-color);
+    border-radius: $sm-rounded;
+    padding: $small-spacing;
+    background: $bg;
+    color: $color;
+
+    &_figure {
+        overflow: hidden;
+        border-radius: $sm-rounded $sm-rounded 0 0;
+        margin-bottom: $small-spacing;
+
+        &>img {
+            aspect-ratio: 16/9;
+            width: 100%;
+            transition: .2s ease-in-out;
+
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    &_body {
+        padding: $small-spacing;
+    }
+
+    &_description {
+        display: block;
+    }
+
+    &_content {
+        display: none;
+    }
+
+    &_footer {
+        @include flex(null, center);
+        padding: $small-spacing;
+    }
+
+    &_btn {
+        background-color: $primary-color;
+        color: $foreground;
+        border: 1px solid darken($primary-color, 10%);
+        border-radius: $sm-rounded;
+        padding: $small-spacing $medium-spacing;
+
+        &:hover {
+            background-color: darken($primary-color, 5%);
+            color: $foreground;
+            text-decoration: none;
+            cursor: pointer;
+            transform: translateY(-2px);
+            transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s;
+        }
+    }
+
+}
+
+.card {
+    @include card;
+}

@@ -1,0 +1,47 @@
+@use "../abstracts/" as *;
+@use 'sass:color';
+
+.aside {
+    background: $aside-background-color;
+    @include glass-dark();
+    color: $aside-color-default;
+    padding: $small-spacing;
+
+    &__nav {
+        @include flex(column);
+        @include list-reset;
+        padding: $small-spacing;
+        gap: $medium-spacing;
+
+        &_item {
+            background: $aside-item-background-color;
+            @include glass-light();
+            color: $aside-item-color-default;
+            @include border($aside-item-border-color);
+            border-radius: $sm-rounded;
+
+            & a {
+                padding: $small-spacing $medium-spacing;
+                width: 100%;
+                display: block;
+                transition: .4s ease;
+
+                &:hover {
+                    transform: translateX(5%);
+                }
+            }
+
+            &:hover {
+                background: darken($aside-item-background-color, 5%);
+                color: $foreground;
+
+            }
+        }
+    }
+
+    @include mq(lg) {
+        min-height: 50%;
+        max-height: 100%;
+        overflow-y: auto;
+    }
+}

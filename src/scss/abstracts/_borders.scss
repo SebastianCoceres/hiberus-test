@@ -1,0 +1,6 @@
+@use "./typography" as *;
+
+$md-rounded: $md-font-size;
+$sm-rounded: $md-rounded * 0.5;
+$lg-rounded: $md-rounded * 1.5;
+$xl-rounded: $md-rounded * 2;

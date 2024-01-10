@@ -1,0 +1,92 @@
+@use "../abstracts/" as *;
+@use "../base/" as *;
+@use "./card" as *;
+
+.main {
+    @include flex(column);
+    padding: 0 $medium-spacing;
+
+    &__carousel {
+        width: 100%;
+        flex: 1;
+        @include border($main-border-color);
+        margin-bottom: $medium-spacing;
+        padding: $small-spacing;
+        background: $main-card-background-color;
+        color: $main-card-color-default;
+        border-radius: $sm-rounded;
+    }
+
+    &__articles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: $medium-spacing;
+
+        &--item {
+            padding: $small-spacing;
+
+        }
+    }
+
+    &__card {
+        $root : &;
+        @include card($main-card-background-color, $main-card-color-default, $main-border-color);
+        transition: all .2s ease-in-out;
+        position: relative;
+
+
+        &:has(.active):before {
+            content: '';
+            @include position(fixed, 0, 0, 0, 0);
+            background: rgba(0, 0, 0, .5);
+        }
+
+        &_wrapper.active {
+
+            max-height: 90vh;
+            overflow-y: auto;
+            @extend .open-modal-animation;
+
+            & #{$root}_figure {
+                flex: 0 0 100%;
+            }
+
+            @include mq(md) {
+
+                & {
+                    display: flex;
+                }
+
+                & #{$root} {
+                    &_figure {
+                        flex: 0 0 min(200px, 100%);
+                    }
+
+                    &_body {
+                        padding: 0 1em;
+                    }
+
+                    &_description {
+                        margin-bottom: $medium-spacing;
+                    }
+
+                    &_content {
+                        display: block;
+                    }
+
+                    &_footer {
+                        justify-content: flex-end;
+                    }
+                }
+            }
+
+        }
+
+
+    }
+
+    @include mq(lg) {
+        padding: 0;
+    }
+
+}

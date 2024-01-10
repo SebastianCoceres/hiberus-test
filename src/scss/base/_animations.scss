@@ -1,0 +1,60 @@
+@use "sass:color";
+@use "../abstracts/" as *;
+
+.puff-in-center {
+    @include animation(0, 0.4s, puff-in-center, normal, both);
+}
+
+.open-modal-animation {
+    @include animation(0, .4s, open-modal, normal, both, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+}
+
+.slide-in-back-center {
+    @include animation(0, .4s, slide-in-back-center, normal, both, cubic-bezier(0.250, 0.460, 0.450, 0.940));
+}
+
+@include keyframes(puff-in-center) {
+    0% {
+        transform: scale(2);
+        filter: blur(4px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        filter: blur(0px);
+        opacity: 1;
+    }
+}
+
+@include keyframes(open-modal) {
+
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        @include position(fixed, 50%, null, null, 50%);
+        max-width: 992px;
+        max-height: 100%;
+        width: 90%;
+        transform: translate(-50%, -50%) scale(1);
+        padding: $medium-spacing;
+        background: $background;
+        @include border(lighten($background, 20%));
+        border-radius: $md-rounded;
+        z-index: 2;
+    }
+}
+
+@include keyframes(slide-in-back-center) {
+    0% {
+        transform: translateZ(600px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateZ(0);
+        opacity: 1;
+    }
+}
