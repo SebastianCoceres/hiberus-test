@@ -6,6 +6,8 @@
     @include glass-dark();
     color: $aside-color-default;
     padding: $small-spacing;
+    border-radius: $sm-rounded;
+    @include border($aside-border-color);
 
     &__nav {
         @include flex(column);
